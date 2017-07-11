@@ -15,28 +15,28 @@
         </header>
         <ion-content class="has-header">
             <ion-list>
-                <ion-item menu-close href="#/app/home" class="item item-avatar-left">
-                    <i class="icon ion-medkit energized"></i>
-                    {{"menu_opiods_overdose" | translate}}
-                </ion-item>
-                <ion-item menu-close href="#/app/renaissance" class="col-offset-10 item-icon-left" >
+                <ion-item menu-close href="#/app/renaissance" class=" item-icon-left" >
                     <i class="icon ion-information-circled energized"></i>
                     {{"menu_about_opiods_overdose" | translate}}
                 </ion-item>
-                <ion-item menu-close href="#/app/events/day1/day1" class="col-offset-10 item-icon-left">
+                <ion-item ng-if="isLoggedIn()" menu-close href="#/app/events/day1/day1" class=" item-icon-left">
                     <i class="icon ion-medkit energized"></i>
                     {{"menu_event" | translate}}
                 </ion-item>
-                <ion-item menu-close href="#/app/map" class="col-offset-10 item-icon-left">
+                <ion-item menu-close href="#/app/kit" class=" item-icon-left">
+                    <i class="icon ion-medkit energized"></i>
+                    {{"menu_kit" | translate}}
+                </ion-item>
+                <ion-item menu-close href="#/app/map" class=" item-icon-left">
                     <i class="icon ion-map energized"></i>
                     {{"menu_map" | translate}}
                 </ion-item>
-                <ion-item menu-close href="#/app/911" class="col-offset-10 item-icon-left">
+                <ion-item menu-close href="#/app/911" class=" item-icon-left">
                     <i class="icon ion-alert energized"></i>
                     {{"menu_call911" | translate}}
                 </ion-item>
-                <ion-item menu-close href="#/app/sponsors" class="item item-icon-left ">
-                    <i class="icon ion-man energized"></i>
+                <ion-item ng-if="isLoggedIn()" menu-close href="#/app/sponsors" class="item item-icon-left ">
+                    <i class="icon ion-home energized"></i>
                     {{"menu_profile" | translate}}
                 </ion-item>
                 <ion-item  ng-if="! isLoggedIn()" menu-close href="#/app/login" class="item item-icon-left ">
@@ -48,7 +48,7 @@
                     {{"menu_register" | translate}}
                 </ion-item>
                 <ion-item  menu-close href="#/app/contact" class="item item-icon-left ">
-                    <i class="icon ion-text energized"></i>
+                    <i class="icon ion-ios-telephone  energized"></i>
                     {{"menu_contact" | translate}}
                 </ion-item>
                 <ion-item ng-if="isLoggedIn()" menu-close ng-click="logout()" class="item item-icon-left ">

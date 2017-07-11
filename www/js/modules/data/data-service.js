@@ -19,13 +19,13 @@ function DataService() {
             var eventsData;
             switch (day){
                 case "day1":
-                    eventsData=retrievedData.day1;
+                    eventsData=retrievedData.day01;
                     break;
                 case "day2":
-                    eventsData=retrievedData.day2;
+                    eventsData=retrievedData.day02;
                     break;
                 case "day3":
-                    eventsData=retrievedData.day3;
+                    eventsData=retrievedData.day03;
                     break;
             }
             return eventsData;

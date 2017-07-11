@@ -2,11 +2,10 @@ angular.module('auth.controllers', [])
 
 .controller('authCtrl', function ($scope, $ionicModal, $state, FirebaseService, $ionicLoading, $rootScope,$ionicLoading) {
 
-    $ionicModal.fromTemplateUrl('js/modules/register/register.html', {
-        scope: $scope
-    }).then(function (modal) {
-        $scope.modal = modal;
-    });
+
+   if(FirebaseService.getAuth()){
+    $state.go('app.home');
+   }
 
     $scope.createUser = function (user) {
         console.log("Create User Function called");

@@ -41,15 +41,6 @@ angular
     }
 
 
-    $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
-    // We can catch the error thrown when the $requireAuth promise is rejected
-    // and redirect the user back to the home page
-    if (error === "AUTH_REQUIRED") {
-      $location.path("/app/login");
-    }
-  });
-
-
     $ionicPlatform
     .ready(function () {
       if (! LocalStorageService.getData()) {
@@ -72,34 +63,25 @@ angular
                 console.log("loaded record:", obj.$id, obj.someOtherKeyInData);
 
                // To iterate the key/value pairs of the object, use angular.forEach()
-               angular.forEach(obj, function(value, key) {
-                console.log(key, value);
-              });
+              LocalStorageService.setEvents(obj['events']);
+               //LocalStorageService.setRenaissance(data.$getRecord('renaissance'));
+               LocalStorageService.setContacts(obj['contacts']);
+              // LocalStorageService.setSponsors(data.$getRecord('sponsors'));
+               LocalStorageService.setMapMarkers(obj['locations']);
+               LocalStorageService.setData('true');
              });
 
-           // FirebaseService
-           // .getData(LocalStorageService.getLanguage())
-           // .then(function (data) {
-              //save data
-             // LocalStorageService.setEvents(data.$getRecord('events'));
-              //LocalStorageService.setRenaissance(data.$getRecord('renaissance'));
-              //LocalStorageService.setContacts(data.$getRecord('contacts'));
-              //LocalStorageService.setSponsors(data.$getRecord('sponsors'));
-              //LocalStorageService.setMapMarkers(data.$getRecord('map'));
-              //LocalStorageService.setData('true');
-          //  });
-            //alert turn on internet
-          } else {
-            $ionicPopup
-            .alert({title: "Internet", content: "{{'content'| translate}}"})
-            .then(function (res) {
-              if (res)
-                navigator.app.exitApp();
+            } else {
+              $ionicPopup
+              .alert({title: "Internet", content: "{{'content'| translate}}"})
+              .then(function (res) {
+                if (res)
+                  navigator.app.exitApp();
+              }
+              );
             }
-            );
           }
-        }
-      })
+        })
     }
   //update data
   if (! LocalStorageService.getData()) {
@@ -117,13 +99,17 @@ angular
 
         // to take an action after the data loads, use the $loaded() promise
         obj.$loaded().then(function() {
-         console.log("loaded record:", obj.$id, obj.someOtherKeyInData);
+          console.log("loaded record:", obj.$id, obj.someOtherKeyInData);
 
-          // To iterate the key/value pairs of the object, use angular.forEach()
-          angular.forEach(obj, function(value, key) {
-            console.log(key, value);
-          });
-        });
+               // To iterate the key/value pairs of the object, use angular.forEach()
+
+               LocalStorageService.setEvents(obj['events']);
+               //LocalStorageService.setRenaissance(data.$getRecord('renaissance'));
+               LocalStorageService.setContacts(obj['contacts']);
+              // LocalStorageService.setSponsors(data.$getRecord('sponsors'));
+               LocalStorageService.setMapMarkers(obj['locations']);
+               LocalStorageService.setData('true');
+             });
       }
     }
   })
@@ -338,6 +324,7 @@ angular
     menu_login: "Login",
     menu_logout: "Logout",
     menu_register: "Register",
+    menu_kit : "I Have Kit",
 
     //tabs
     day1: "Fri 28.8.",
@@ -365,6 +352,7 @@ angular
     menu_about_opiods_overdose: "About Opiods-Overdose",
     menu_event: "Raspored programa",
     menu_map: "Find Overdose Kit",
+       menu_kit : "I Have Kit",
     menu_profile: "Profile",
     menu_contact: "Kontakt",
     menu_help: "Pomoć",

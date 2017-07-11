@@ -1,31 +1,18 @@
-<ion-view view-title="Login">
-    <ion-content class="padding has-header">
-        <div class="list">
-            <img src="img/logo-footer.png" class="logo">
-            <div class="logoText">
-                MyApp
+<ion-view>
+    <ion-content scroll="false">
+        <section class="login-container">
+            <div class = "col header text-center">
+               <img src="./img/ionic.png" class = "logo" />
             </div>
-        </div>
-        <div class="list card padding">
-            <label class="item item-input">
-                <span class="input-label">Email</span>
-                <input type="text" ng-model="user.email">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Password</span>
-                <input type="password" ng-model="user.password">
-            </label>
-            <button ng-click="signIn(user)" class="button button-block button-positive activated">
-                Sign In
-            </button>
-            <button ng-click="reSet(user)" class="button button-block button-positive activated">
-                Reset My Password
-            </button>
-        </div>
-        <div class="list" style="text-align:center">
-            <a href="#/app/register" class="button button-small button-outline icon-left ion-person-add button-positive">
-                Create New Account
-            </a>
-        </div>
+            <div class = "col button-row text-center">
+               <img src="./img/facebook-button.png" />
+            </div>
+            <div class = "col button-row text-center" href="#/app/login">
+               <img src="./img/email-button.png" />
+            </div>
+            <div class = "col text-center">
+                Already have an account? <strong><a href = "#/app/login">Sign in now!</a></strong>
+            </div>            
+        </section>
     </ion-content>
 </ion-view>
