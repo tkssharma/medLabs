@@ -1,15 +1,15 @@
 (function() {
     "use strict";
-    angular.module('sponsors.controllers', []).controller('SponsorsCtrl', SponsorsCtrl);
+    angular.module('profile.controllers', []).controller('ProfileCtrl', ProfileCtrl);
 
-    SponsorsCtrl.$inject = ['LocalStorageService','$ionicModal','$scope'];
+    ProfileCtrl.$inject = ['LocalStorageService','$ionicModal','$scope'];
 
     /**
      * @name SponsorsCtrl
      * @desc Application Controller for sponsors screen. Shows sponsors data on screen
      *       and sponsors details on modal screen
      */
-    function SponsorsCtrl(LocalStorageService,$ionicModal,$scope) {
+    function ProfileCtrl(LocalStorageService,$ionicModal,$scope) {
         var that=this;
         this._$scope=$scope;
 
@@ -26,7 +26,7 @@
      * @name openModal
      * @desc It's opening modal
      */
-    SponsorsCtrl.prototype.openModal=function(decription,img){
+    ProfileCtrl.prototype.openModal=function(decription,img){
         this.details = {
             description: decription,
             img: img
@@ -38,7 +38,7 @@
      * @name closeModal
      * @desc It's closing modal
      */
-    SponsorsCtrl.prototype.closeModal=function(){
+    ProfileCtrl.prototype.closeModal=function(){
         this._$scope.modal.hide();
     };
 

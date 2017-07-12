@@ -1,0 +1,26 @@
+<ion-view view-title="Login">
+    <ion-content class="padding has-header">
+
+        <div class="list card padding">
+            <label class="item item-input">
+                <span class="input-label">Email</span>
+                <input type="text" ng-model="user.email">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="user.password">
+            </label>
+            <button ng-click="signIn(user)" class="button button-block button-positive activated">
+                Sign In
+            </button>
+            <button ng-click="reSet(user)" class="button button-block button-positive activated">
+                Reset My Password
+            </button>
+        </div>
+        <div class="list" style="text-align:center">
+            <a href="#/app/register" class="button button-small button-outline icon-left ion-person-add button-positive">
+                Create New Account
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

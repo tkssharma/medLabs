@@ -9,6 +9,7 @@
 }
 
 .login-container {
+  text-align: center;
   display: -webkit-flex;
   -webkit-flex-direction: column;
   height: 100%;
@@ -18,6 +19,10 @@
 
 .login-container > .button-row img {
   max-width: 80%;
+}
+.login-container > .header {
+    -webkit-flex: 4;
+    padding-top: 20px;
 }
 
 .login-container > .header {

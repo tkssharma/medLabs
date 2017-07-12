@@ -35,16 +35,16 @@
                     <i class="icon ion-alert energized"></i>
                     {{"menu_call911" | translate}}
                 </ion-item>
-                <ion-item ng-if="isLoggedIn()" menu-close href="#/app/sponsors" class="item item-icon-left ">
+                <ion-item ng-if="isLoggedIn()" menu-close href="#/app/profile" class="item item-icon-left ">
                     <i class="icon ion-home energized"></i>
                     {{"menu_profile" | translate}}
                 </ion-item>
                 <ion-item  ng-if="! isLoggedIn()" menu-close href="#/app/login" class="item item-icon-left ">
-                    <i class="icon ion-help-circled energized"></i>
+                    <i class="icon ion-log-in energized"></i>
                     {{"menu_login" | translate}}
                 </ion-item>
                 <ion-item ng-if="! isLoggedIn()" menu-close href="#/app/register" class="item item-icon-left ">
-                    <i class="icon ion-help-circled energized"></i>
+                    <i class="icon ion-person-add energized"></i>
                     {{"menu_register" | translate}}
                 </ion-item>
                 <ion-item  menu-close href="#/app/contact" class="item item-icon-left ">

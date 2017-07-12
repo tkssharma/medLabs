@@ -15,7 +15,7 @@ angular
   'localization.services',
   'pascalprecht.translate',
   'dcbImgFallback',
-  'sponsors.controllers',
+  'profile.controllers',
   'uiGmapgoogle-maps',
   'maps.controllers',
   'mapGeolocation.services'
@@ -160,6 +160,24 @@ angular
         }]
       }
     })
+    .state('app.loginauth', {
+    url: "/loginauth",
+    views: {
+      'menuContent': {
+        templateUrl: "js/modules/login/auth.html",
+        controller: "authCtrl"
+      }
+    },
+    resolve: {
+        // controller will not be loaded until $requireSignIn resolves
+        // Auth refers to our $firebaseAuth wrapper in the factory below
+        "currentAuth": ["FirebaseService", function(FirebaseService) {
+          // $requireSignIn returns a promise so the resolve waits for it to complete
+          // If the promise is rejected, it will throw a $stateChangeError (see above)
+          return  ! FirebaseService.getAuth()
+        }]
+      }
+    })
   .state('app.register', {
     url: "/register",
     views: {
@@ -268,12 +286,12 @@ angular
         }]
       }
     })
-  .state('app.sponsors', {
-    url: "/sponsors",
+  .state('app.profile', {
+    url: "/profile",
     views: {
       'menuContent': {
-        templateUrl: "js/modules/sponsors/sponsors.html",
-        controller: 'SponsorsCtrl as sc'
+        templateUrl: "js/modules/profile/profile.html",
+        controller: 'ProfileCtrl as sc'
       }
     },
     resolve: {
@@ -318,8 +336,9 @@ angular
     menu_event: "Events",
     menu_call911 : "Call 911",
     menu_map: "Find Overdose Kit",
-    menu_profile: "Profile",
-    menu_contact: "Contacts",
+
+    menu_profile : "Profile",
+        menu_contact: "Contacts",
     menu_help: "Help",
     menu_login: "Login",
     menu_logout: "Logout",
@@ -352,8 +371,8 @@ angular
     menu_about_opiods_overdose: "About Opiods-Overdose",
     menu_event: "Raspored programa",
     menu_map: "Find Overdose Kit",
-       menu_kit : "I Have Kit",
-    menu_profile: "Profile",
+    menu_kit : "I Have Kit",
+    menu_profile : "Profile",
     menu_contact: "Kontakt",
     menu_help: "Pomoć",
     menu_login: "Login",
