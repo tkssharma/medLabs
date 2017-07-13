@@ -18,7 +18,8 @@ angular
   'profile.controllers',
   'uiGmapgoogle-maps',
   'maps.controllers',
-  'mapGeolocation.services'
+  'mapGeolocation.services',
+  'kit.controllers'
   ])
 .run(function ($ionicPlatform, $ionicPopup, FirebaseService, LocalStorageService, LocalizationService,$rootScope,$firebaseObject,$state,$ionicLoading) {
 
@@ -205,6 +206,16 @@ angular
       }
     }
   })
+
+    .state('app.kit', {
+    url: "/kit",
+    views: {
+      'menuContent': {
+        templateUrl: "js/modules/kit/kit.html",
+        controller : "kitCtrl"
+      }
+    }
+  })
   .state('app.events', {
     url: "/events",
     abstract: true,
@@ -333,7 +344,7 @@ angular
     menu_opiods_overdose: "Opiods-Overdose",
     menu_about_opiods_overdose: "About Opiods-Overdose",
     menu_about_ren_fest: "About renaissance",
-    menu_event: "Events",
+    menu_event: "Available Kit Holders",
     menu_call911 : "Call 911",
     menu_map: "Find Overdose Kit",
 
@@ -346,9 +357,9 @@ angular
     menu_kit : "I Have Kit",
 
     //tabs
-    day1: "Fri 28.8.",
-    day2: "Sat 29.8.",
-    day3: "Sun 30.8.",
+    day1: "Hospitals",
+    day2: "Individuals",
+    day3: "Help",
     exit: "Exit",
 
     //internet connection popup alert
@@ -369,7 +380,7 @@ angular
     menu_name: "Menu",
     menu_opiods_overdose: "Opiods-Overdose",
     menu_about_opiods_overdose: "About Opiods-Overdose",
-    menu_event: "Raspored programa",
+    menu_event: "Available kits",
     menu_map: "Find Overdose Kit",
     menu_kit : "I Have Kit",
     menu_profile : "Profile",
