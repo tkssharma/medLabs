@@ -1,7 +1,19 @@
-Ionic App Base
+Ionic Medlab Project + Firebase Auth
 =====================
 
-A starting project for Ionic that optionally supports using custom SCSS.
+Project for live App
+## screens of this application
+
+![alt text](screens/01.jpg "")
+![alt text](screens/02.jpg "")
+![alt text](screens/03.jpg "")
+![alt text](screens/04.jpg "")
+![alt text](screens/05.jpg "")
+![alt text](screens/06.jpg "")
+![alt text](screens/07.jpg "")
+
+
+
 
 ## Using this project
 
@@ -13,7 +25,7 @@ For example, to start a new Ionic project with the default tabs interface, make 
 $ npm install -g ionic
 ```
 
-Then run: 
+Then run:
 
 ```bash
 $ ionic start myProject tabs
