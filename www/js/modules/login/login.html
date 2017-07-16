@@ -1,21 +1,21 @@
-<ion-view>
+<ion-view title="Login" hide-back-button="true">
     <ion-content ng-if="('l'|translate)=='en'" class="has-header" scroll="false" has-bouncing="false">
         <section class="login-container">
-            <div class = "col">
-               <img src="./img/logo.png"/ style="
+            <div class="col">
+                <img src="./img/logo.png" / style="
     height: 200px;
     width: 200px;
 ">
             </div>
-            <div class = "col button-row">
-               <img src="./img/facebook-button.png" />
-            </div>
-            <div class = "col button-row" href="#/app/register">
-               <img src="./img/email-button.png"  href="#/app/register">
-            </div>
-            <div class = "col">
+            <a class="col button-row">
+                <img src="./img/facebook-button.png" />
+            </a>
+            <a class="col button-row" href="#/app/register">
+                <img src="./img/email-button.png" href="#/app/register">
+            </a>
+            <div class="col">
                 Already have an account? <strong><a href = "#/app/loginauth">Sign in now!</a></strong>
-            </div>            
+            </div>
         </section>
     </ion-content>
 </ion-view>
