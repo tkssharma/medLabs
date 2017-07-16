@@ -1,48 +1,35 @@
-(function() {
-    "use strict";
-    angular.module('maps.controllers', []).controller('MapCtrl', MapCtrl);
+angular.module('maps.controllers', ['data.services', 'localStorage.services', 'uiGmapgoogle-maps', 'mapGeolocation.services', 'ui.router'])
 
-    MapCtrl.$inject = ['LocalStorageService', 'MapGeolocationService','$state'];
+/**
+ * @name MapCtrl
+ * @desc Application Controller for map screen
+ */
+.controller('MapCtrl', ['$scope', 'DataService', 'LocalStorageService', 'MapGeolocationService', '$state',
+    function($scope, DataService, LocalStorageService, MapGeolocationService, $state) {
 
-    /**
-     * @name MapCtrl
-     * @desc Application Controller for map screen
-     */
-    function MapCtrl(LocalStorageService, MapGeolocationService,$state) {
-        this._LocalStorageService=LocalStorageService;
-        this._MapGeolocationService=MapGeolocationService;
-        this._$state=$state;
-        this.markers=this._LocalStorageService.getMapMarkers();
-        var resetLocation= {
-            idKey:undefined,
-            latitude:undefined,
-            longitude:undefined,
-            icon: undefined,
-            title: undefined
-        };
-        var userLocation=this._LocalStorageService.getUserLocation()!=null ? this._LocalStorageService.getUserLocation() : resetLocation ;
-        this._LocalStorageService.setUserLocation(resetLocation);
+        var userLocation = LocalStorageService.getUserLocation();
+        if (!userLocation) {
+            MapGeolocationService.getLocation().then(function(response) {
+                LocalStorageService.setUserLocation(response);
+                userLocation = LocalStorageService.getUserLocation();
 
-        this.options = {
-            scrollwheel: false
-        };
+            });
+        }
 
-        this.windowOptions = {
-            show: false
-        };
+        var markersData = LocalStorageService.getMapMarkers();
+        $scope.markers = DataService.getData(markersData);
 
-
-        if(userLocation.idKey!=undefined){
-            this.markers.push(userLocation);
-            this.map = {
+        if (userLocation && userLocation.idKey != undefined) {
+            $scope.markers.push(userLocation);
+            $scope.map = {
                 center: {
                     latitude: userLocation.latitude,
                     longitude: userLocation.longitude
                 },
                 zoom: 16
             };
-        }else{
-            this.map = {
+        } else {
+            $scope.map = {
                 center: {
                     latitude: 46.1617581,
                     longitude: 16.8316687
@@ -51,33 +38,35 @@
             };
         }
 
+        /**
+         * @name init
+         * @desc Shows map and markes with data on screen
+         */
+        var init = function() {
+            $scope.options = {
+                scrollwheel: false
+            };
+
+            $scope.windowOptions = {
+                show: false
+            };
+
+            $scope.onClick = function() {
+                $scope.windowOptions.show = !$scope.windowOptions.show;
+            };
+
+            $scope.closeClick = function() {
+                $scope.windowOptions.show = false;
+            };
+        };
+
+        init();
+
+        $scope.currentLocation = function() {
+            MapGeolocationService.getLocation().then(function(response) {
+                LocalStorageService.setUserLocation(response);
+                $state.go($state.current, {}, { reload: true });
+            });
+        };
     }
-
-    /**
-     * @name onClick
-     * @desc Open marker
-     */
-    MapCtrl.prototype.onClick=function(){
-        this.windowOptions.show = !this.windowOptions.show;
-    };
-    /**
-     * @name closeClick
-     * @desc Close marker
-     */
-    MapCtrl.prototype.closeClick=function(){
-        this.windowOptions.show = false;
-    };
-
-    /**
-     * @name currentLocation
-     * @desc Fetch current user location
-     */
-    MapCtrl.prototype.currentLocation=function(){
-        var that=this;
-        this._MapGeolocationService.getLocation().then(function(response){
-            that._LocalStorageService.setUserLocation(response);
-            that._$state.go(that._$state.current, {}, {reload: true});
-        });
-    };
-
-})();
+]);

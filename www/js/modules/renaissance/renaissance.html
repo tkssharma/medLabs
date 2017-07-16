@@ -1,14 +1,42 @@
 <ion-view title="{{'menu_about_opiods_overdose' | translate}}">
     <ion-content class="has-header">
-        <div ng-repeat="item in ::rc.drugLabs track by $index">
-            <img ng-if="::item.img!='null'" ng-src="{{::item.img}}" fallback-src="img/renaissance.jpg" class="renaissanceImg">
-            <h2 ng-if="::item.header!='null'" class="text-center">{{::item.header}}</h2>
-            <ion-item class="item item-text-wrap">
-                <h2>{{::item.title}}:</h2>
-                <p>{{::item.information}}</p>
-            </ion-item>
+
+
+        <div class="list card">
+
+            <div class="item item-avatar">
+                <img src="img/03.jpg">
+                <h2>Opiate overdose</h2>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" src="img/03.jpg">
+                <p>
+                    Opiate overdose persists as a major public health problem, contributing to significant morbidity and mortality among opiate users globally. Opiate overdose can be reversed by the timely administration of naloxone. </p><br/>
+                <p>Programs that distribute naloxone to opiate users and their acquaintances have been successfully implemented in a number of cities around the world and have shown that non-medical personnel are able to administer naloxone to reverse opiate
+                    overdoses and save lives. </p>
+                <div class="list list-inset">
+
+                    <div class="item">
+                        Fentanyl
+                    </div>
+                    <div class="item">
+                        Heroin
+                    </div>
+                    <div class="item">
+                        Morphine
+                    </div>
+                    <div class="item">
+                        Methadone
+                    </div>
+                    <div class="item">
+                        Oxycodone
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-        <img class="centered" src="img/logo-footer.png">
+
     </ion-content>
 </ion-view>
-

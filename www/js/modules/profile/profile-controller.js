@@ -2,31 +2,37 @@
     "use strict";
     angular.module('profile.controllers', []).controller('ProfileCtrl', ProfileCtrl);
 
-    ProfileCtrl.$inject = ['LocalStorageService','$ionicModal','$scope'];
+    ProfileCtrl.$inject = ['LocalStorageService', '$ionicModal', '$scope', 'FirebaseService'];
 
     /**
      * @name SponsorsCtrl
      * @desc Application Controller for sponsors screen. Shows sponsors data on screen
      *       and sponsors details on modal screen
      */
-    function ProfileCtrl(LocalStorageService,$ionicModal,$scope) {
-        var that=this;
-        this._$scope=$scope;
+    function ProfileCtrl(LocalStorageService, $ionicModal, $scope, FirebaseService) {
+        var that = this;
+        this._$scope = $scope;
 
-        this.sponsors=LocalStorageService.getSponsors();
-        $ionicModal.fromTemplateUrl('sponsors-modal.html', {
-            scope: that._$scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            that._$scope.modal = modal;
-        });
+        this.profileData = FirebaseService.getCurrentUser();
+        var name, email, photoUrl, uid, emailVerified;
+
+        if (this.profileData != null) {
+            this.name = this.profileData.displayName;
+            this.email = this.profileData.email;
+            this.photoUrl = this.profileData.photoURL;
+            this.emailVerified = this.profileData.emailVerified;
+            this.uid = this.profileData.uid; // The user's ID, unique to the Firebase project. Do NOT use
+            // this value to authenticate with your backend server, if
+            // you have one. Use User.getToken() instead.
+        }
+
     }
 
     /**
      * @name openModal
      * @desc It's opening modal
      */
-    ProfileCtrl.prototype.openModal=function(decription,img){
+    ProfileCtrl.prototype.openModal = function(decription, img) {
         this.details = {
             description: decription,
             img: img
@@ -38,7 +44,7 @@
      * @name closeModal
      * @desc It's closing modal
      */
-    ProfileCtrl.prototype.closeModal=function(){
+    ProfileCtrl.prototype.closeModal = function() {
         this._$scope.modal.hide();
     };
 

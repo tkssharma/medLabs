@@ -2,31 +2,28 @@
 
     <ion-content has-bouncing="false">
 
-   <div class="list card">
+        <div class="list card">
 
-  <div class="item item-avatar">
-    <img src="img/logo.png" style="height: 100px;width: 100px">
-    <h2>Marty McFly</h2>
-    <p>November 05, 1955</p>
-  </div>
+            <div class="item item-avatar">
+                <img src={{sc.photoUrl}} fallback-src="img/logo.png" style="height: 100px;width: 100px">
+                <h2>{{sc.name}}</h2>
+                <p>{{sc.email}}</p>
+                <p>{{sc.uid}}</p>
 
-  <div class="item item-body">
-    <img class="full-image" src="img/logo.png">
-    <p>
-      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-      the content is from a card-body consisting of an image and paragraph text. The footer
-      consists of tabs, icons aligned left, within the card-footer.
-    </p>
-    <p>
-      <a href="#" class="subdued">1 Like</a>
-      <a href="#" class="subdued">5 Comments</a>
-    </p>
-  </div>
+            </div>
 
-</div>
-</ion-content>
+            <div class="item item-body">
+                <img class="full-image" src={{sc.photoUrl}} fallback-src="img/logo.png">
+                <p>
+                    This is a "Facebook" styled Card. The header is created from a Thumbnail List item, the content is from a card-body consisting of an image and paragraph text. The footer consists of tabs, icons aligned left, within the card-footer.
+                </p>
+                <p>
+                    <a href="#" class="subdued">1 Like</a>
+                    <a href="#" class="subdued">5 Comments</a>
+                </p>
+            </div>
+
+        </div>
+    </ion-content>
 
 </ion-view>
-
-
-
