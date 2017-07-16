@@ -4,13 +4,13 @@ Ionic Medlab Project + Firebase Auth
 Project for live App
 ## screens of this application
 
-![alt text](screens/01.jpg "")
-![alt text](screens/02.jpg "")
-![alt text](screens/03.jpg "")
-![alt text](screens/04.jpg "")
-![alt text](screens/05.jpg "")
-![alt text](screens/06.jpg "")
-![alt text](screens/07.jpg "")
+![alt text](screens/01.png "")
+![alt text](screens/02.png "")
+![alt text](screens/03.png "")
+![alt text](screens/04.png "")
+![alt text](screens/05.png "")
+![alt text](screens/06.png "")
+![alt text](screens/07.png "")
 
 
 
