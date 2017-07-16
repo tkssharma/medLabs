@@ -19,6 +19,9 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
         var markersData = LocalStorageService.getMapMarkers();
         $scope.markers = DataService.getData(markersData);
 
+        $scope.markers.templateUrl = 'info.html';
+        $scope.markers.templateParameter = {};
+
         if (userLocation && userLocation.idKey != undefined) {
             $scope.markers.push(userLocation);
             $scope.map = {
@@ -28,6 +31,7 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
                 },
                 zoom: 16
             };
+
         } else {
             $scope.map = {
                 center: {
@@ -69,4 +73,8 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
             });
         };
     }
-]);
+]).controller('infowindowTemplateController', infowindowTemplateController);
+
+infowindowTemplateController.$inject = ['$scope'];
+
+function infowindowTemplateController($scope) {}

@@ -1,0 +1,10 @@
+<div data-ng-controller="infowindowTemplateController">
+    <div class="mapinfowindow" data-ui-sref="display({id: parameter.id})">
+        <div class="previewimage-container">
+            <img data-ng-attr-src="{{:: parameter.img }}">
+        </div>
+        <span>{{:: parameter.title }}</span>
+        <span>{{:: parameter.address }}</span>
+
+    </div>
+</div>

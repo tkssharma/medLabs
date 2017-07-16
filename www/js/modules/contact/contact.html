@@ -1,18 +1,16 @@
 <ion-view title="{{'menu_contact' | translate}}">
     <ion-content ng-if="('l'|translate)=='en'" class="has-header" scroll="false" has-bouncing="false">
 
-      <div class="list">
-        <a ng-repeat="item in cc.contacts" 
-           href="#/{{item.id}}"
-           class="item item-thumbnail-left">
+        <div class="list">
+            <a ng-repeat="item in cc.contacts" href="#/{{item.id}}" class="item item-thumbnail-left">
 
-          <img src="img/logo.png">
-          <h4>{{ item.name }}</h4>
-          <h4>{{ item.address }}</h4>
-          <h4>{{ item.email }}</h4>
-        </a>
+                <img src="img/logo.png">
+                <h4>{{ item.name }}</h4>
+                <h4>{{ item.address }}</h4>
+                <h4>{{ item.email }}</h4>
+            </a>
 
-      </div>
+        </div>
 
 
     </ion-content>

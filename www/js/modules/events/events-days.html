@@ -4,13 +4,13 @@
             <div ng-repeat="item in ::ec.events track by $index" class="item-text-wrap">
                 <ion-item ng-if="::item.divider!='null'" class="item-divider item-energized">{{::item.divider}}</ion-item>
                 <ion-item ng-if="::item.details=='null'" class="item-thumbnail-left">
-                    <img ng-src="{{::item.img}}" fallback-src="img/02.jpg">
+                    <img src="img/02.jpg" fallback-src="img/02.jpg">
                     <p>{{::item.time}}</p>
                     <h2>{{::item.title}}</h2>
                     <p ng-if="::item.description!='null'">{{::item.description}}</p>
                 </ion-item>
                 <ion-item ng-if="::item.details!='null'" ng-href="#/app/events/{{ec.day}}/{{item.description}}/{{item.details}}/{{item.time}}/{{item.title}}/{{item.img}}/{{item.img2}}" class="item-thumbnail-left item-icon-right">
-                    <img ng-src="{{::item.img}}" fallback-src="img/02.jpg">
+                    <img src="img/02.jpg" fallback-src="img/02.jpg">
                     <p>{{::item.time}}</p>
                     <h2 class="text-left item-text-wrap">{{::item.title}}</h2>
                     <p ng-if="::item.description!='null'">{{::item.description}}</p>
