@@ -12,15 +12,16 @@ angular.module('kit.controllers', [])
 
     $scope.createUser = function(user) {
         console.log("Create User Function called");
-        if (user && user.email && user.fname && user.lname) {
+        if (user && user.email && user.fname && user.mob) {
             $ionicLoading.show({
                 template: 'saving data...'
             });
 
             firebase.database().ref('locations/' + userLocation.idKey).set({
                 name: user.fname,
-                key: userLocation.idKey,
+                idKey: userLocation.idKey,
                 email: user.email,
+                mobile : user.mob,
                 address: userLocation.address,
                 latitude: userLocation.latitude,
                 longitude: userLocation.longitude,

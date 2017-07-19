@@ -30,7 +30,7 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
                     longitude: userLocation.longitude
                 },
                 zoom: 16
-            };
+            }; 
 
         } else {
             $scope.map = {

@@ -31,13 +31,13 @@ function DataService() {
         getEventsData: function(retrievedData, day) {
             var eventsData;
             switch (day) {
-                case "day1":
+                case "day01":
                     eventsData = retrievedData.day01;
                     break;
-                case "day2":
+                case "day02":
                     eventsData = retrievedData.day02;
                     break;
-                case "day3":
+                case "day03":
                     eventsData = retrievedData.day03;
                     break;
             }
