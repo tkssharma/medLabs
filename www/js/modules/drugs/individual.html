@@ -1,18 +1,18 @@
-<ion-view title="Individual">
+<ion-view title="Individual" hide-back-button="false">
     <ion-content>
         <ion-list>
             <div ng-repeat="item in ::ec.kitOwners track by $index" class="item-text-wrap">
                 <ion-item ng-if="::item.name != 'null'" class="item-divider item-energized">{{::item.name}}
                 </ion-item>
                 <ion-item ng-if="::item.email !=='null'" class="item-thumbnail-left">
-                    <img src="img/02.jpg" fallback-src="img/02.jpg">
+                    <img src="img/help.jpg" fallback-src="img/help.jpg">
                     <p>{{::item.name}}</p>
                     <h2>{{::item.email}}</h2>
                     <h3>{{::item.mobile}}</h3>
                     <p ng-if="::item.address!='null'">{{::item.address}}</p>
                 </ion-item>
                 <ion-item ng-if="::item.details!='null'"  class="item-thumbnail-left item-icon-right">
-                    <img src="img/02.jpg" fallback-src="img/02.jpg">
+                    <img src="img/map.jpg" fallback-src="img/map.jpg" href="#/app/map">
                     <p>Location</p>
                     <h2 class="text-left item-text-wrap">{{::item.latitude}}</h2>
                     <p ng-if="::item.longitude!='null'">{{::item.longitude}}</p>

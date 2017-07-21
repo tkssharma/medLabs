@@ -1,21 +1,31 @@
-<ion-view title="Login" hide-back-button="true">
+<ion-view title="Login" hide-back-button="false">
     <ion-content ng-if="('l'|translate)=='en'" class="has-header" scroll="false" has-bouncing="false">
         <section class="login-container">
             <div class="col">
                 <img src="./img/logo.png" / style="
-    height: 200px;
-    width: 200px;
-">
-            </div>
-            <a class="col button-row">
-                <img src="./img/facebook-button.png" />
-            </a>
-            <a class="col button-row" href="#/app/register">
-                <img src="./img/email-button.png" href="#/app/register">
-            </a>
-            <div class="col">
-                Already have an account? <strong><a href = "#/app/loginauth">Sign in now!</a></strong>
-            </div>
-        </section>
-    </ion-content>
-</ion-view>
+                height: 200px;
+                width: 200px;
+                ">
+                <div class="list card padding">
+                    <label class="item item-input">
+                        <span class="input-label">Email</span>
+                        <input type="text" ng-model="user.email">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input type="password" ng-model="user.password">
+                    </label>
+                    <button ng-click="signIn(user)" class="button button-block button-positive activated">
+                        Sign In
+                    </button>
+                    <button ng-click="reSet(user)" class="button button-block button-positive activated">
+                        Reset My Password
+                    </button>
+                    </div>
+
+                <div class="col">
+                    Don't have account create new <strong><a href = "#/app/register">Sign Up now!</a></strong>
+                </div>
+            </section>
+        </ion-content>
+    </ion-view>
