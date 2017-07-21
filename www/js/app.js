@@ -232,7 +232,16 @@ angular
             'menuContent': {
                 templateUrl: "js/modules/drugs/drugs.html"
             }
-        }
+        },
+        resolve: {
+                    // controller will not be loaded until $requireSignIn resolves
+                    // Auth refers to our $firebaseAuth wrapper in the factory below
+                    "currentAuth": ["FirebaseService", function(FirebaseService) {
+                        // $requireSignIn returns a promise so the resolve waits for it to complete
+                        // If the promise is rejected, it will throw a $stateChangeError (see above)
+                        return FirebaseService._redirectIfNotAuthenticated();
+                    }]
+                }
     })
     .state('app.drugs.hospital', {
         url: "/hospital/:hospital",
@@ -396,4 +405,5 @@ angular
         });
         $translateProvider.preferredLanguage("en");
         $translateProvider.fallbackLanguage("en");
-    })
+    });
+
