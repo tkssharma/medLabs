@@ -34,6 +34,7 @@ function FirebaseService($q, $firebaseAuth, $firebaseObject, $state,LocalStorage
                     LocalStorageService.setContacts(obj['contacts']);
                     // LocalStorageService.setSponsors(data.$getRecord('sponsors'));
                     LocalStorageService.setMapMarkers(obj['locations']);
+                    LocalStorageService.setQA(obj['qa']);
                     LocalStorageService.setData('true');
                 }, function() {
                     defer.reject();

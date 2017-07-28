@@ -16,7 +16,7 @@ angular.module('kit.controllers', [])
             $ionicLoading.show({
                 template: 'saving data...'
             });
-
+            $ionicLoading.hide();
             firebase.database().ref('locations/' + userLocation.idKey).set({
                 name: user.fname,
                 idKey: userLocation.idKey,

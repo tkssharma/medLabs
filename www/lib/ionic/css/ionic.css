@@ -7866,9 +7866,6 @@ ion-tabs.tabs-color-active-dark .tab-item.activated {
 .item-content h5,
 .item-content h6,
 .item-content p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 a.item {

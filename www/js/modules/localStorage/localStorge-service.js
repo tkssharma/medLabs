@@ -20,7 +20,9 @@ function LocalStorageService($localStorage) {
         setUserLocation:setUserLocation,
         getUserLocation:getUserLocation,
         setLanguage:setLanguage,
-        getLanguage:getLanguage
+        getLanguage:getLanguage,
+        getQA: getQA,
+        setQA : setQA
     };
 
     /**
@@ -40,6 +42,27 @@ function LocalStorageService($localStorage) {
     function getData(){
         return $localStorage.data;
     }
+
+
+    /**
+     * @name setData
+     * @desc Saving 'true' - representing that data it's in localStorage
+     * @param {string} value - true
+     */
+    function setQA(value){
+        $localStorage.QA=value;
+    }
+
+    /**
+     * @name getData
+     * @desc Looking if data is in localStorage
+     * @returns {string} true/false
+     */
+    function getQA(){
+        return $localStorage.QA;
+    }
+
+
 
     /**
      * @name setContacts
@@ -170,4 +193,3 @@ function LocalStorageService($localStorage) {
 
 
 }
-

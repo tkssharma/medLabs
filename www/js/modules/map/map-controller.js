@@ -23,6 +23,8 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
         $scope.markers.templateParameter = {};
 
         if (userLocation && userLocation.idKey != undefined) {
+          userLocation.address= 'Your current Location';
+          console.log($scope.markers);
             $scope.markers.push(userLocation);
             $scope.map = {
                 center: {
@@ -30,7 +32,7 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
                     longitude: userLocation.longitude
                 },
                 zoom: 16
-            }; 
+            };
 
         } else {
             $scope.map = {

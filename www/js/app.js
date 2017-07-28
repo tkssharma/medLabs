@@ -23,7 +23,8 @@ angular
     'maps.controllers',
     'mapGeolocation.services',
     'kit.controllers',
-    'ionic.cloud'
+    'ionic.cloud',
+    'help.controllers'
     ])
 .run(function($ionicPlatform, $ionicPopup, FirebaseService, LocalStorageService, LocalizationService, $rootScope, $firebaseObject, $state, $ionicLoading) {
 
@@ -268,9 +269,20 @@ angular
         url: "/help",
         views: {
             'menuContent': {
-                templateUrl: "js/modules/help/help.html"
+                templateUrl: "js/modules/help/help.html",
+                controller: 'HelpCCCtrl'
+
             }
-        }
+        },
+        resolve: {
+                    // controller will not be loaded until $requireSignIn resolves
+                    // Auth refers to our $firebaseAuth wrapper in the factory below
+                    "currentAuth": ["FirebaseService", function(FirebaseService) {
+                        // $requireSignIn returns a promise so the resolve waits for it to complete
+                        // If the promise is rejected, it will throw a $stateChangeError (see above)
+                        return FirebaseService.getApplicationData()
+                    }]
+                }
     })
             // if none of the above states are matched, use this as the fallback
             $urlRouterProvider.otherwise('/app/home');
@@ -355,4 +367,3 @@ angular
         $translateProvider.preferredLanguage("en");
         $translateProvider.fallbackLanguage("en");
     });
-
