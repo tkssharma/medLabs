@@ -18,10 +18,10 @@
 			address = profileData.address;
 			email = profileData.email;
 		}
-
 		this.sendhelp = function(_item){
 			$ionicLoading.show({template: 'sending request...'});
 			if(_item.email === email) {
+				$ionicLoading.hide();
 				return ;
 			}
 			firebase.database().ref('requests/' + _item.id).set({
