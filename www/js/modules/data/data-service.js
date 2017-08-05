@@ -6,7 +6,6 @@ DataService.$inject = [];
  * @desc Service for data organization
  */
 function DataService() {
-
     return {
         /**
          * @name getData

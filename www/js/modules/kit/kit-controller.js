@@ -9,7 +9,6 @@ angular.module('kit.controllers', [])
     }).then(function(_address) {
         userLocation.address = _address;
     })
-
     $scope.createUser = function(user) {
         console.log("Create User Function called");
         if (user && user.email && user.fname && user.mob) {

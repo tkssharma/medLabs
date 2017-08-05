@@ -1,8 +1,6 @@
 angular.module('auth.controllers', [])
 
 .controller('authCtrl', function ($scope, $ionicModal, $state, FirebaseService, $ionicLoading, $rootScope,$ionicLoading,LocalStorageService,MapGeolocationService,$ionicHistory) {
-
-
 	if(FirebaseService.getAuth()){
 		$state.go('app.home');
 	}
@@ -90,7 +88,6 @@ angular.module('auth.controllers', [])
 				alert("Please enter email and password both");
 		}
 }
-
 $scope.reSet = function (user) {
 		if (user.email) {
 				FirebaseService.getServiceRef().$sendPasswordResetEmail(user.email).then(function() {

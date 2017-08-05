@@ -8,7 +8,6 @@ function LocalizationService($q,$translate,LocalStorageService) {
         getLanguage:getLanguage,
         setLanguage:setLanguage
     };
-
     /**
      * @name getLanguage
      * @desc Looking for smartphone language set in settings
