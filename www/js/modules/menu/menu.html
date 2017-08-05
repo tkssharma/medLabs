@@ -33,6 +33,9 @@
                 <ion-item menu-close href="#/app/map" class=" item-icon-left">
                     <i class="icon ion-map energized"></i> {{"menu_map" | translate}}
                 </ion-item>
+                  <ion-item menu-close href="#/app/request" class="item item-icon-left ">
+                    <i class="icon ion-person-add energized"></i> {{"menu_request" | translate}}
+                </ion-item>
                 <ion-item menu-close href="tel:+911" class=" item-icon-left">
                     <i class="icon ion-alert energized"></i> {{"menu_call911" | translate}}
                 </ion-item>
@@ -45,13 +48,11 @@
                 <ion-item ng-if="! isLoggedIn()" menu-close href="#/app/register" class="item item-icon-left ">
                     <i class="icon ion-person-add energized"></i> {{"menu_register" | translate}}
                 </ion-item>
-                <ion-item menu-close href="#/app/contact" class="item item-icon-left ">
-                    <i class="icon ion-ios-telephone  energized"></i> {{"menu_contact" | translate}}
-                </ion-item>
                 <ion-item ng-if="isLoggedIn()" menu-close ng-click="logout()" class="item item-icon-left ">
                     <i class="icon ion-log-out energized"></i> {{"menu_logout" | translate}}
                 </ion-item>
-                <ion-item menu-close href="#/app/help" class="item item-icon-left ">
+              
+                <ion-item menu-close href="#/app/qa" class="item item-icon-left ">
                     <i class="icon ion-help-circled energized"></i> {{"menu_help" | translate}}
                 </ion-item>
             </ion-list>

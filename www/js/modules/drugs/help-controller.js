@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    angular.module('help.controllers', []).controller('HelpCtrl', HelpCtrl);
+    angular.module('help.ctrl', []).controller('HelpCtrl', HelpCtrl);
 
     HelpCtrl.$inject = ['LocalStorageService','DataService','$stateParams'];
 

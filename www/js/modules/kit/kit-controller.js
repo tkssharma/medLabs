@@ -21,6 +21,7 @@ angular.module('kit.controllers', [])
                 name: user.fname,
                 idKey: userLocation.idKey,
                 email: user.email,
+                id : userLocation.idKey,
                 mobile : user.mob,
                 address: userLocation.address,
                 latitude: userLocation.latitude,

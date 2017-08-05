@@ -10,6 +10,7 @@
                     <h2>{{::item.email}}</h2>
                     <a href="tel:{{item.mobile}}">Call: {{::item.mobile}}</a>
                     <p ng-if="::item.address!='null'">{{::item.address}}</p>
+                    <a href="" ng-click="ec.sendhelp(item)" >Send Help Request<i class="icon ion-person-add energized"></i></a> 
                 </ion-item>
                 <ion-item ng-if="::item.details!='null'"  class="item-thumbnail-left item-icon-right">
                     <img src="img/map.jpg" fallback-src="img/map.jpg" href="#/app/map">

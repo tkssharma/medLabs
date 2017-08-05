@@ -1,0 +1,19 @@
+
+
+<ion-view title="Requests" hide-back-button="false">
+	<ion-content>
+		<ion-list>
+			<div ng-repeat="item in ::ec.requests track by $index" class="item-text-wrap">
+				<ion-item ng-if="::item.from != 'null'" class="item-divider item-energized">help request from {{::item.from}}
+				</ion-item>
+				<ion-item ng-if="::item.from !=='null'" class="item-thumbnail-left">
+					<img src="img/logo.png">
+					<p>{{::item.fromaddress}}</p>
+					<h2>{{::item.frommobile}}</h2>
+					<a href="tel:{{item.frommobile}}">Call: {{::item.frommobile}}</a>
+			</ion-item>
+			</div>
+		</ion-list>
+	</ion-content>
+</ion-view>
+

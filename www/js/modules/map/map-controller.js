@@ -8,13 +8,8 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
     function($scope, DataService, LocalStorageService, MapGeolocationService, $state) {
 
         var userLocation = LocalStorageService.getUserLocation();
-        if (!userLocation) {
-            MapGeolocationService.getLocation().then(function(response) {
-                LocalStorageService.setUserLocation(response);
-                userLocation = LocalStorageService.getUserLocation();
 
-            });
-        }
+               $scope.showLocationMarkers = function(){
 
         var markersData = LocalStorageService.getMapMarkers();
         $scope.markers = DataService.getData(markersData);
@@ -24,13 +19,14 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
 
         if (userLocation && userLocation.idKey != undefined) {
           userLocation.address= 'Your current Location';
-          console.log($scope.markers);
+
             $scope.markers.push(userLocation);
             $scope.map = {
                 center: {
                     latitude: userLocation.latitude,
                     longitude: userLocation.longitude
                 },
+                id : 78979,
                 zoom: 16
             };
 
@@ -40,9 +36,24 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
                     latitude: 46.1617581,
                     longitude: 16.8316687
                 },
+                id : 78979,
                 zoom: 16
             };
         }
+    }
+    
+        if (!userLocation) {
+            MapGeolocationService.getLocation().then(function(response) {
+                LocalStorageService.setUserLocation(response);
+                userLocation = LocalStorageService.getUserLocation();
+                $scope.showLocationMarkers();
+
+            });
+        }else{
+           $scope.showLocationMarkers();
+        }
+
+ 
 
         /**
          * @name init

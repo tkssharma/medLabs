@@ -22,8 +22,50 @@ function LocalStorageService($localStorage) {
         setLanguage:setLanguage,
         getLanguage:getLanguage,
         getQA: getQA,
-        setQA : setQA
+        setQA : setQA,
+        setUsers : setUsers ,
+        getUsers : getUsers,
+        setRequests : setRequests,
+        getRequests : getRequests
     };
+
+
+
+ /**
+     * @name setData
+     * @desc Saving 'true' - representing that data it's in localStorage
+     * @param {string} value - true
+     */
+    function setRequests(value){
+        $localStorage.requests=value;
+    }
+
+    /**
+     * @name getData
+     * @desc Looking if data is in localStorage
+     * @returns {string} true/false
+     */
+    function getRequests(){
+        return $localStorage.requests;
+    }
+
+    /**
+     * @name setData
+     * @desc Saving 'true' - representing that data it's in localStorage
+     * @param {string} value - true
+     */
+    function setUsers(value){
+        $localStorage.users=value;
+    }
+
+    /**
+     * @name getData
+     * @desc Looking if data is in localStorage
+     * @returns {string} true/false
+     */
+    function getUsers(){
+        return $localStorage.users;
+    }
 
     /**
      * @name setData

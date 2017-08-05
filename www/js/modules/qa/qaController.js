@@ -1,6 +1,6 @@
-angular.module('help.controllers', [])
+angular.module('qa.controllers', [])
 
-.controller('HelpCCCtrl', function($scope,LocalStorageService) {
+.controller('qaController', function($scope,LocalStorageService) {
 $scope.groups = LocalStorageService.getQA();
 
 /*

@@ -13,11 +13,12 @@
         var that = this;
         this._$scope = $scope;
 
-        this.profileData = FirebaseService.getCurrentUser();
+        this.profileData = FirebaseService.setUserProfile();
         var name, email, photoUrl, uid, emailVerified;
 
         if (this.profileData != null) {
-            this.name = this.profileData.displayName;
+            this.mobile = this.profileData.mobile;
+            this.address = this.profileData.address;
             this.email = this.profileData.email;
             this.photoUrl = this.profileData.photoURL;
             this.emailVerified = this.profileData.emailVerified;

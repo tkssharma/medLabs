@@ -1,11 +1,11 @@
 angular.module('firebase.services', ['firebase']).factory('FirebaseService', FirebaseService);
 
-FirebaseService.$inject = ['$q', '$firebaseAuth', '$firebaseObject', '$state','LocalStorageService','$timeout'];
+FirebaseService.$inject = ['$q', '$firebaseAuth', '$firebaseObject', '$state','LocalStorageService','$timeout','$ionicLoading'];
 /**
  * @name FirebaseService
  * @desc Service for communication with webservice
  */
-function FirebaseService($q, $firebaseAuth, $firebaseObject, $state,LocalStorageService,$timeout) {
+function FirebaseService($q, $firebaseAuth, $firebaseObject, $state,LocalStorageService,$timeout,$ionicLoading) {
 
     return {
         /**
@@ -19,6 +19,10 @@ function FirebaseService($q, $firebaseAuth, $firebaseObject, $state,LocalStorage
         },
         getApplicationData: function() {
             var defer = $q.defer();
+
+            $ionicLoading.show({
+                template: 'Loading Data...'
+            });
 
             if ($firebaseAuth().$getAuth()) {
                 var ref = firebase.database().ref();
@@ -34,18 +38,38 @@ function FirebaseService($q, $firebaseAuth, $firebaseObject, $state,LocalStorage
                     LocalStorageService.setContacts(obj['contacts']);
                     // LocalStorageService.setSponsors(data.$getRecord('sponsors'));
                     LocalStorageService.setMapMarkers(obj['locations']);
+                    LocalStorageService.setUsers(obj['users']);
+                    LocalStorageService.setRequests(obj['requests']);
+
                     LocalStorageService.setQA(obj['qa']);
                     LocalStorageService.setData('true');
+                    $ionicLoading.hide();
                 }, function() {
                     defer.reject();
+                    $ionicLoading.hide();
                 });
             } else {
                 $timeout(function() {
                     $state.go('app.login'); /* (4) */
                 });
                 defer.reject();
+                $ionicLoading.hide();
             }
             return defer.promise;
+        },
+        setUserProfile : function(){
+         var firebaseUser = $firebaseAuth().$getAuth();
+         var _users = LocalStorageService.getUsers();
+            if (firebaseUser) {
+              angular.forEach(_users , function(_user){
+                if(_user.email === firebaseUser.email){
+                    firebaseUser.mobile = _user.mobile;
+                    firebaseUser.address = _user.address;
+                    firebaseUser.email = _user.email;
+                }
+              });
+            }
+            return firebaseUser ? firebaseUser : null; 
         },
         getAuth: function() {
             var firebaseUser = $firebaseAuth().$getAuth();

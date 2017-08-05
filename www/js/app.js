@@ -10,11 +10,10 @@ angular
     'contact.controllers',
     'auth.controllers',
     'renaissance.controllers',
-
-    'help.controllers',
+    'help.ctrl',
     'individual.controllers',
     'hospital.controllers',
-
+    'request.controllers',
     'localization.services',
     'pascalprecht.translate',
     'dcbImgFallback',
@@ -24,7 +23,7 @@ angular
     'mapGeolocation.services',
     'kit.controllers',
     'ionic.cloud',
-    'help.controllers'
+    'qa.controllers'
     ])
 .run(function($ionicPlatform, $ionicPopup, FirebaseService, LocalStorageService, LocalizationService, $rootScope, $firebaseObject, $state, $ionicLoading) {
 
@@ -69,7 +68,48 @@ angular
                 }
 
             });
-    })
+
+      //  pushNotification = window.plugins.pushNotification;
+       /* window.onNotification = function(e){
+
+          console.log('notification received');
+
+          switch(e.event){
+            case 'registered':
+            if(e.regid.length > 0){
+
+                var device_token = e.regid;
+                RequestsService.register(device_token).then(function(response){
+                  alert('registered!');
+              });
+            }
+            break;
+            case 'message':
+            alert('msg received');
+            alert(JSON.stringify(e));
+            break;
+
+            case 'error':
+            alert('error occured');
+            break;
+        }
+    };
+    window.errorHandler = function(error){
+      alert('an error occured');
+  }
+  pushNotification.register(
+      onNotification,
+      errorHandler,
+      {
+        'badge': 'true',
+        'sound': 'true',
+        'alert': 'true',
+        'senderID': 'YOUR PROJECT ID FROM GOOGLE CONSOLE',
+        'ecb': 'onNotification'
+    }
+    );  */
+
+})
 .config(function($stateProvider, $urlRouterProvider, $translateProvider, $ionicCloudProvider) {
 
     $ionicCloudProvider.init({
@@ -165,7 +205,7 @@ angular
                 templateUrl: "js/modules/drugs/drugs.html"
             }
         }
-            })
+    })
     .state('app.drugs.hospital', {
         url: "/hospital/:hospital",
         views: {
@@ -174,7 +214,7 @@ angular
                 controller: "HospitalCtrl as ec"
             }
         },
-                resolve: {
+        resolve: {
                     // controller will not be loaded until $requireSignIn resolves
                     // Auth refers to our $firebaseAuth wrapper in the factory below
                     "currentAuth": ["FirebaseService", function(FirebaseService) {
@@ -183,7 +223,7 @@ angular
                         return FirebaseService.getApplicationData()
                     }]
                 }
-    })
+            })
     .state('app.drugs.individual', {
         url: "/individual/:individual",
         views: {
@@ -192,7 +232,7 @@ angular
                 controller: "IndividualCtrl as ec"
             }
         },
-                resolve: {
+        resolve: {
                     // controller will not be loaded until $requireSignIn resolves
                     // Auth refers to our $firebaseAuth wrapper in the factory below
                     "currentAuth": ["FirebaseService", function(FirebaseService) {
@@ -201,7 +241,7 @@ angular
                         return FirebaseService.getApplicationData()
                     }]
                 }
-    })
+            })
     .state('app.drugs.help', {
         url: "/help/:help",
         views: {
@@ -210,7 +250,7 @@ angular
                 controller: "HelpCtrl as ec"
             }
         },
-                resolve: {
+        resolve: {
                     // controller will not be loaded until $requireSignIn resolves
                     // Auth refers to our $firebaseAuth wrapper in the factory below
                     "currentAuth": ["FirebaseService", function(FirebaseService) {
@@ -219,7 +259,7 @@ angular
                         return FirebaseService.getApplicationData()
                     }]
                 }
-    })
+            })
     .state('app.map', {
         url: "/map",
         views: {
@@ -265,12 +305,12 @@ angular
             }
         }
     })
-    .state('app.help', {
-        url: "/help",
+    .state('app.request', {
+        url: "/request",
         views: {
             'menuContent': {
-                templateUrl: "js/modules/help/help.html",
-                controller: 'HelpCCCtrl'
+                templateUrl: "js/modules/request/request.html",
+                controller: 'requestController as ec'
 
             }
         },
@@ -283,7 +323,26 @@ angular
                         return FirebaseService.getApplicationData()
                     }]
                 }
-    })
+            })
+    .state('app.qa', {
+        url: "/qa",
+        views: {
+            'menuContent': {
+                templateUrl: "js/modules/qa/qa.html",
+                controller: 'qaController'
+
+            }
+        },
+        resolve: {
+                    // controller will not be loaded until $requireSignIn resolves
+                    // Auth refers to our $firebaseAuth wrapper in the factory below
+                    "currentAuth": ["FirebaseService", function(FirebaseService) {
+                        // $requireSignIn returns a promise so the resolve waits for it to complete
+                        // If the promise is rejected, it will throw a $stateChangeError (see above)
+                        return FirebaseService.getApplicationData()
+                    }]
+                }
+            })
             // if none of the above states are matched, use this as the fallback
             $urlRouterProvider.otherwise('/app/home');
 
@@ -299,7 +358,7 @@ angular
             menu_event: "Available Kits",
             menu_call911: "Call 911",
             menu_map: "Overdose Kit",
-
+            menu_request : "Requests",
             menu_profile: "Profile",
             menu_contact: "Contacts",
             menu_help: "Help",
@@ -347,6 +406,7 @@ angular
             hospital : "Hospital",
             individual : "Individual",
             help : "Help",
+            menu_request : "Requests",
 
 
             //tabs
