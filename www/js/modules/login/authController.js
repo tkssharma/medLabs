@@ -1,11 +1,17 @@
 angular.module('auth.controllers', [])
 
-.controller('authCtrl', function ($scope, $ionicModal, $state, FirebaseService, $ionicLoading, $rootScope,$ionicLoading,LocalStorageService,MapGeolocationService) {
+.controller('authCtrl', function ($scope, $ionicModal, $state, FirebaseService, $ionicLoading, $rootScope,$ionicLoading,LocalStorageService,MapGeolocationService,$ionicHistory) {
 
 
 	if(FirebaseService.getAuth()){
 		$state.go('app.home');
 	}
+    $ionicHistory.clearCache();
+
+	$scope.$on("$ionicView.enter", function () {
+		   $ionicHistory.clearCache();
+		   $ionicHistory.clearHistory();
+	});
 
 	var userLocation;
 	if(! LocalStorageService.getUserLocation()){
