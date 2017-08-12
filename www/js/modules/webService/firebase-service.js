@@ -1,29 +1,23 @@
 angular.module('firebase.services', ['firebase']).factory('FirebaseService', FirebaseService);
 
-FirebaseService.$inject = ['$q', '$firebaseAuth', '$firebaseObject', '$state','LocalStorageService','$timeout','$ionicLoading'];
+FirebaseService.$inject = ['$q', '$firebaseAuth', '$firebaseObject', '$state',
+   'LocalStorageService','$timeout','$ionicLoading'];
 /**
  * @name FirebaseService
  * @desc Service for communication with webservice
  */
-function FirebaseService($q, $firebaseAuth, $firebaseObject, $state,LocalStorageService,$timeout,$ionicLoading) {
+function FirebaseService($q, $firebaseAuth, $firebaseObject,
+    $state,LocalStorageService,$timeout,$ionicLoading) {
 
     return {
-        /**
-         * @name getData
-         * @desc Fetch and synchronize data from web service
-         * @param {string} lang- language (hr,en..)
-         * @returns {Object[]|json}
-         */
         getServiceRef: function() {
             return $firebaseAuth();
         },
         getApplicationData: function() {
             var defer = $q.defer();
-
             $ionicLoading.show({
                 template: 'Loading Data...'
             });
-
             if ($firebaseAuth().$getAuth()) {
                 var ref = firebase.database().ref();
                 var obj = $firebaseObject(ref);
