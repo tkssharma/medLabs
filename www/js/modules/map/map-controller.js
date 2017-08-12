@@ -52,9 +52,6 @@ angular.module('maps.controllers', ['data.services', 'localStorage.services', 'u
         }else{
            $scope.showLocationMarkers();
         }
-
- 
-
         /**
          * @name init
          * @desc Shows map and markes with data on screen
